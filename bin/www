@@ -1,0 +1,6 @@
+const app = require('../app')
+
+let PORT = process.env.PORT || 5000
+let HOST = process.env.HOST || 'localhost'
+
+app.listen(PORT, HOST, () => console.log(`Running on #${HOST}:${PORT}`))
