@@ -1,6 +1,7 @@
 const { Schema } = require('mongoose')
 
-module.exports = new Schema({
+module.exports = new Schema(
+  {
     username: {
         type: String,
         required: [true, 'The username is required'],
@@ -23,4 +24,8 @@ module.exports = new Schema({
         ref: "Role"
       }
     ]
-})
+  },
+  {
+    timestamps: true
+  }
+)

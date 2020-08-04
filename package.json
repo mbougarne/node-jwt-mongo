@@ -4,15 +4,16 @@
   "description": "A Node app with JWT and MongoDB",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www",
+    "migrate": "node ./database/migrate"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mbougarne/node-jwt-mongo.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["Node", "JWT", "MongoDB", "Mongoose"],
+  "author": "Mourad Bougarne",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/mbougarne/node-jwt-mongo/issues"
   },
