@@ -76,7 +76,7 @@ const signup = (req, res) =>
     })
 }
 
-const singin = (req, res) => {
+const signin = (req, res) => {
 
     let username = (validateEmail(req.body.username)) ? 'email' : 'username'
 
@@ -137,5 +137,5 @@ const validateEmail = username => {
 
 module.exports = {
     signup,
-    singin
+    signin
 }
