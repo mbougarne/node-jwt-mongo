@@ -1,8 +1,7 @@
 const { ROLES } = require('../database/config')
 const User = require('../models/User')
-const Role = require('../models/Role')
 
-checkIfUsernameIsExists = (req, res, next) => {
+const checkIfUsernameIsExists = (req, res, next) => {
 
     User.findOne({
         username: req.body.username
@@ -24,12 +23,12 @@ checkIfUsernameIsExists = (req, res, next) => {
             })
         }
 
-        next()
+        return next()
     })
 }
 
 
-checkIfEmailIsExists = (req, res, next) => {
+const checkIfEmailIsExists = (req, res, next) => {
     
     User.findOne({
         email: req.body.email
@@ -51,15 +50,14 @@ checkIfEmailIsExists = (req, res, next) => {
             })
         }
 
-        next()
+        return next()
     })
 }
 
-checkIfRoleExists = (req, res, next) => {
-
+const checkIfRoleExists = (req, res, next) => {
     if(req.body.roles) 
     {
-        for(let i = 0; i < ROLES.length; i++)
+        for(let i = 0; i < req.body.roles.length; i++)
         {
             if(!ROLES.includes(req.body.roles[i]))
             {
@@ -72,7 +70,7 @@ checkIfRoleExists = (req, res, next) => {
         }
     }
 
-    next()
+    return next()
 }
 
 module.exports = {

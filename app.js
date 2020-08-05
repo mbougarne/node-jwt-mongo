@@ -1,7 +1,17 @@
 const express = require('express')
 const cors = require('cors')
+const connect = require('./database/connect')
 
 require('dotenv').config()
+
+// Connect to MongoDB
+connect().then( () => {
+    console.log('Successfully connect to MongoDB')
+}).catch( error => {
+    console.error("Connection error ", error)
+    process.exit()
+});
+
 
 const LoginRoutes = require('./routes/auth')
 const UsersRoutes = require('./routes/users')

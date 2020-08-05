@@ -43,29 +43,42 @@ const signup = (req, res) =>
                         massage: error.message
                     })
                 })
+        }
+        
+        Role.find(
+            {
+                name: {
+                    $in: req.body.roles
+                }
+            },
+            (err, roles) => {
 
-            user.roles = roles.map(role => role._id)
-            user.save( err=> {
                 if(err) {
                     return res.status(500).json({
                         success: false,
                         error_code: 500,
-                        massage: error.message
-                    })           
+                        massage: err.message
+                    })
                 }
 
-                return res.status(201).json({
-                    success: true,
-                    message: "The user has created successfully!"
+                user.roles = roles.map(role => role._id)
+                user.save( err=> {
+        
+                    if(err) {
+                        return res.status(500).json({
+                            success: false,
+                            error_code: 500,
+                            massage: err.message
+                        })           
+                    }
+        
+                    return res.status(201).json({
+                        success: true,
+                        message: "The user has created successfully!"
+                    })
+        
                 })
-
             })
-        }
-
-        return res.status(201).json({
-            success: true,
-            message: "The user has created successfully!"
-        })
 
     }).catch(error => {
         return res.status(500).json({

@@ -89,7 +89,7 @@ isModerator = (req, res, next) => {
                 },
                 (err, roles) => 
                 {
-
+                    
                     if(err)
                     {
                         return res.status(500).json({
@@ -99,7 +99,7 @@ isModerator = (req, res, next) => {
                         })
                     }
 
-                    if(!roles.includes('moderator'))
+                    if(!roles.some(role => role.name == 'moderator'))
                     {
                         return res.status(403).json({
                             success: false,
